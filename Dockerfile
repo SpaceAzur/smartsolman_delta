@@ -11,4 +11,6 @@ WORKDIR /smartsolman
 RUN zypper install -y python3 gcc python3-devel python3-pip sqlite3 zip
 RUN pip install -r requirements.txt
 
-# ENTRYPOINT /smartsolman/app/dev/delta.sh
+# lance l'application a la creation du conteneur
+CMD ["/smartsolman/app/dev/delta.sh"]
+ENTRYPOINT [ "/bin/bash" ]
