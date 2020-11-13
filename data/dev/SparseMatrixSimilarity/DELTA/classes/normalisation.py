@@ -6,18 +6,18 @@ from collections import defaultdict
 class Normalisation(object):
 
     RATIO = 0.92
-    LEMMA_FR = json.load(open("../../../frLemmaBase_unicode_val_in_keys.json"))
-    LEMMA_ENG = json.load(open("../../..//EngLemmaBase_unicode.json"))
+    LEMMA_FR = json.load(open("/smartsolman/data/frLemmaBase_unicode_val_in_keys.json"))
+    LEMMA_ENG = json.load(open("/smartsolman/data/EngLemmaBase_unicode.json"))
 
     ALPHABET = [ h for h in "abcdefghijklmnopqrstuvwxyz"]
 
-    with open("../../../stopwords_v1.2","rb") as f:
+    with open("/smartsolman/data/stopwords_v1.2","rb") as f:
         STOPWORDS_FR = pickle.load(f)
 
-    with open("../../..//english_stopwords_merge_of_nltk_spacy_gensim","r") as f:
+    with open("/smartsolman/data/english_stopwords_merge_of_nltk_spacy_gensim","r") as f:
         STOPWORDS_ENG = json.load(f)
 
-    with open("../../..//SAPtables","rb") as f:
+    with open("/smartsolman/data/SAPtables","rb") as f:
         SAPTABLES = pickle.load(f)
 
     with open("full_model2/full_dico_unique","r") as u:
@@ -26,13 +26,13 @@ class Normalisation(object):
     with open("full_model2/full_dico","r") as u:
         FULL_DICT = json.load(u).keys()
 
-    with open("../../../src/fautes_orthographe/dev/dict_fautes_orthographes_92.json","r") as f:
+    with open("/smartsolman/data/src/fautes_orthographe/dev/dict_fautes_orthographes_92.json","r") as f:
         CORRECTION_ORTHOGRAPHE = json.load(f)
 
-    with open("../../../src/traductions/sap_sterm/monogram/fr_monogram.json","r") as f:
+    with open("/smartsolman/data/src/traductions/sap_sterm/monogram/fr_monogram.json","r") as f:
         FR_MONOGRAM = json.load(f)
 
-    with open("../../../src/traductions/sap_sterm/monogram/eng_monogram.json","r") as f:
+    with open("/smartsolman/data/src/traductions/sap_sterm/monogram/eng_monogram.json","r") as f:
         ENG_MONOGRAM = json.load(f)
 
 
@@ -63,7 +63,7 @@ class Normalisation(object):
             c += 1
         bar.finish()
         # sauvegarde le dictionnaire total du modele en JSON 
-        with open("../../..//dev/SparseMatrixSimilarity/DELTA/full_model_buffer/full_dico",'w') as f:      # je sauvegarde le dictionnaire du corpus
+        with open("/smartsolman/data/dev/SparseMatrixSimilarity/DELTA/full_model_buffer/full_dico",'w') as f:      # je sauvegarde le dictionnaire du corpus
             json.dump(inventaire,f)
 
         # identifie les token qui n'apparaissent que dans un seul message solman
@@ -73,11 +73,11 @@ class Normalisation(object):
                 unique[i] = val.get('orig')
 
         # sauvegarde les mots uniques en JSON
-        with open("full_model_buffer/full_dico_unique",'w') as f:     # je sauvegarde le dictionnaire de mot unique du corpus
+        with open("/smartsolman/data/dev/SparseMatrixSimilarity/DELTA/full_model_buffer/full_dico_unique",'w') as f:     # je sauvegarde le dictionnaire de mot unique du corpus
             json.dump(unique,f)
 
         # sauvegarde en CSV
-        with open("full_model_buffer/dict_unique.csv", "w") as csv_file:  
+        with open("/smartsolman/data/dev/SparseMatrixSimilarity/DELTA/full_model_buffer/dict_unique.csv", "w") as csv_file:  
             writer = csv.writer(csv_file)
             for key, value in unique.items():
                 writer.writerow([key, value])

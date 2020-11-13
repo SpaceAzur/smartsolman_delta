@@ -15,7 +15,6 @@ def timeit(func):
 class NormalisationDataBase(object):
 
     DB_LOCATION = "/smartsolman/data/src/norma.db"
-    
     # @timeit
     def __init__(self):
         self.connection = sqlite3.connect(NormalisationDataBase.DB_LOCATION)

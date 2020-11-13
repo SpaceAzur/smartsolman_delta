@@ -14,7 +14,7 @@ class MessageDelta(object):
         self.heure_extract_delta = os.popen("TZ=Europe/Paris date +'%H:%M:%S'").read().rstrip()
 
     def getLastDate(self):
-        with open("date_delta","r") as f:
+        with open("/smartsolman/data/dev/SparseMatrixSimilarity/DELTA/date_delta","r") as f:
             last_maj = json.load(f)
         dat = last_maj['date']
         heure = last_maj['horaire']
@@ -23,7 +23,7 @@ class MessageDelta(object):
     def saveDeltaDate(self):
         # maj_date = dict.fromkeys({ self.jour_extract_delta, self.heure_extract_delta }, 0)
         maj_date = {"date": self.jour_extract_delta,"horaire": self.heure_extract_delta}
-        with open("date_delta","w") as f:
+        with open("/smartsolman/data/dev/SparseMatrixSimilarity/DELTA/date_delta","w") as f:
             json.dump(maj_date,f)
 
     def getMessageDeltaFromSolman(self):
